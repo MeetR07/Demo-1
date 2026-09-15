@@ -1,0 +1,142 @@
+---
+const films = [
+  {
+    title: "RIA + KASHYAP - UDAIPUR",
+    cover: "/images/hero_1.jpg",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+  },
+  {
+    title: "RAHUL + SONALI - TAJ LANDS MUMBAI",
+    cover: "/images/film_2.jpg",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+  },
+  {
+    title: "RHEA + KABIR - GOA",
+    cover: "/images/hero_2.jpg",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+  },
+  {
+    title: "NATASHA + VARUN - JAIPUR PALACE",
+    cover: "/images/film_1.jpg",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
+  },
+];
+---
+
+<section id="wedding-films-section" class="w-full bg-[#F3F2EE] py-24 text-[#2C2C2C] border-b border-[#E7E3DF]">
+  <div class="mx-auto max-w-6xl px-6 md:px-10">
+    <!-- Header Philosophy (Matching Screenshots 3 & 4) -->
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-6">
+      <h2 class="font-display text-4xl sm:text-5xl font-normal text-[#6B5D4F] tracking-wide">
+        Wedding Films
+      </h2>
+
+      <p class="text-xs sm:text-sm text-[#2C2C2C] leading-relaxed font-light">
+        At Stories by Bhavin, we celebrate the free spirits, the rule breakers, the explorers, and the modern couples unafraid to be themselves. We believe a wedding photographer’s true purpose is to capture the vibe of the day and the unique personalities of the couple. This philosophy has taken us from intimate home ceremonies to grand celebrations across continents.
+      </p>
+
+      <p class="text-xs sm:text-sm text-[#2C2C2C] leading-relaxed font-light">
+        Here are some select weddings from recent years, showcasing the authentic union of two souls, told in the most genuine and heartfelt way.
+      </p>
+    </div>
+
+    <!-- 2x2 Grid of 4 Cinematic Video Cards (Matching Screenshot 4) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      {
+        films.map((film) => (
+          <div class="group flex flex-col items-center">
+            <!-- Video Thumbnail Frame with Play Button Overlay -->
+            <div class="relative aspect-video w-full overflow-hidden rounded bg-black mb-4 shadow-md">
+              <img
+                src={film.cover}
+                alt={film.title}
+                class="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+
+              <!-- Play Circle Overlay Icon -->
+              <button
+                class="film-play-btn absolute inset-0 m-auto flex h-16 w-16 items-center justify-center rounded-full bg-white/20 border border-white/60 backdrop-blur-sm text-white shadow-xl transition-all duration-300 transform group-hover:scale-110 hover:bg-white hover:text-black focus:outline-none"
+                data-title={film.title}
+                data-video={film.videoUrl}
+                aria-label={`Play film ${film.title}`}
+              >
+                <svg class="h-7 w-7 translate-x-0.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Title Below Video Card -->
+            <span class="text-xs uppercase tracking-[0.25em] font-sans font-medium text-[#6B5D4F] group-hover:text-[#2C2C2C] transition-colors">
+              {film.title}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Video Popup Modal -->
+  <div
+    id="film-video-modal"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+  >
+    <div class="relative w-full max-w-4xl rounded-2xl bg-[#1E1C1A] p-4 border border-white/10 shadow-2xl">
+      <div class="flex items-center justify-between pb-3 px-2">
+        <h4 id="film-modal-title" class="font-display text-lg text-white font-normal tracking-wider">Wedding Film Trailer</h4>
+        <button id="close-film-modal-btn" class="text-white/70 hover:text-white p-1">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="relative aspect-video w-full overflow-hidden rounded-xl bg-black">
+        <iframe
+          id="film-modal-iframe"
+          class="h-full w-full border-0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const filmBtns = document.querySelectorAll('.film-play-btn');
+  const filmModal = document.getElementById('film-video-modal');
+  const closeFilmBtn = document.getElementById('close-film-modal-btn');
+  const filmIframe = document.getElementById('film-modal-iframe') as HTMLIFrameElement;
+  const filmTitle = document.getElementById('film-modal-title');
+
+  filmBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const videoUrl = btn.getAttribute('data-video') || '';
+      const title = btn.getAttribute('data-title') || '';
+      if (filmIframe && filmModal && filmTitle) {
+        filmIframe.src = videoUrl;
+        filmTitle.textContent = title;
+        filmModal.classList.remove('opacity-0', 'pointer-events-none');
+        filmModal.classList.add('opacity-100');
+        document.body.classList.add('overflow-hidden');
+      }
+    });
+  });
+
+  function closeFilmModal() {
+    if (filmModal && filmIframe) {
+      filmModal.classList.remove('opacity-100');
+      filmModal.classList.add('opacity-0', 'pointer-events-none');
+      filmIframe.src = '';
+      document.body.classList.remove('overflow-hidden');
+    }
+  }
+
+  closeFilmBtn?.addEventListener('click', closeFilmModal);
+  filmModal?.addEventListener('click', (e) => {
+    if (e.target === filmModal) closeFilmModal();
+  });
+</script>

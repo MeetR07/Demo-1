@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <rect width="1600" height="1000" fill="#20261f"/>
+  <g opacity="0.5">
+    <line x1="0" y1="0" x2="1600" y2="1000" stroke="#b7d1a8" stroke-width="1"/>
+    <line x1="1600" y1="0" x2="0" y2="1000" stroke="#b7d1a8" stroke-width="1"/>
+  </g>
+  <text x="50%" y="48%" text-anchor="middle" font-family="Georgia, serif" font-size="42" fill="#b7d1a8">Placeholder — Journal post</text>
+  <text x="50%" y="56%" text-anchor="middle" font-family="monospace" font-size="20" fill="#b7d1a8" opacity="0.7">replace before launch — /public/images/placeholders/blog-1.svg</text>
+</svg>

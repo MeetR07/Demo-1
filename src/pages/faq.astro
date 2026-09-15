@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+---
+
+<BaseLayout title="Frequently Asked Questions" description="Answers to common questions regarding wedding photography, cinematic films, deliverables, and booking process with Stories by Bhavin.">
+  <!-- FAQ Header Banner -->
+  <section class="w-full bg-paper-dark py-20 text-paper text-center">
+    <div class="mx-auto max-w-4xl px-6">
+      <span class="text-xs uppercase tracking-[0.3em] text-gold font-semibold block mb-2">
+        Got Questions?
+      </span>
+      <h1 class="font-display text-4xl sm:text-6xl font-semibold text-white mb-4">
+        Frequently Asked Questions
+      </h1>
+      <p class="text-xs sm:text-sm text-white/70 max-w-lg mx-auto font-light leading-relaxed">
+        Everything you need to know about our booking process, photography philosophy, travel arrangements, and deliverables.
+      </p>
+    </div>
+  </section>
+
+  <!-- Accordion Section -->
+  <FaqAccordion />
+
+  <!-- Form CTA -->
+  <InquiryForm />
+</BaseLayout>

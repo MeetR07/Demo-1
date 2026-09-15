@@ -1,0 +1,131 @@
+---
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Wedding", href: "/wedding" },
+  { name: "Films", href: "/films" },
+  { name: "Editorial", href: "/editorial" },
+  { name: "Contact", href: "/contact" },
+  { name: "Unveil The Mystique", href: "/about" },
+  { name: "FAQ'S", href: "/faq" },
+];
+---
+
+<header class="sticky top-0 z-50 w-full bg-[#F3F2EE]/95 backdrop-blur-md border-b border-[#E7E3DF] transition-all duration-300">
+  <div class="mx-auto flex max-w-[1480px] items-center justify-between px-4 sm:px-8 py-4">
+    <!-- Creative Brand Logo with Camera Monogram Emblem -->
+    <a href="/" class="flex items-center space-x-3 group">
+      <!-- Creative Golden Lens Monogram SVG -->
+      <div class="relative flex h-11 w-11 items-center justify-center rounded-full border border-[#9F9483] bg-[#FFFDF8] shadow-sm transition-transform duration-500 group-hover:scale-105 group-hover:border-[#6B5D4F]">
+        <svg class="h-6 w-6 text-[#6B5D4F] transition-colors group-hover:text-[#2C2C2C]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <!-- Aperture Lens Blades -->
+          <circle cx="12" cy="12" r="9" class="stroke-[#9F9483]" stroke-width="1" />
+          <circle cx="12" cy="12" r="4" stroke-width="1" />
+          <path stroke-linecap="round" d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke-width="1" />
+          <!-- Inner Monogram S & B initials -->
+          <text x="12" y="15.5" font-family="'Cormorant Garamond', serif" font-size="9.5" font-weight="700" text-anchor="middle" fill="#6B5D4F" stroke="none">SB</text>
+        </svg>
+      </div>
+
+      <!-- Logo Typography -->
+      <div class="flex flex-col">
+        <span class="font-display text-xl sm:text-2xl font-semibold tracking-[0.18em] text-[#6B5D4F] group-hover:text-[#2C2C2C] transition-colors">
+          STORIES BY BHAVIN
+        </span>
+        <span class="text-[9px] uppercase tracking-[0.25em] text-[#6B5D4F]/80 font-sans font-light">
+          Fine Art Wedding Photography & Films
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden items-center space-x-8 lg:flex">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="relative text-xs uppercase tracking-[0.18em] font-medium text-[#2C2C2C] hover:text-[#6B5D4F] transition-colors duration-200 py-1 hover-gold-line"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      type="button"
+      aria-label="Toggle Navigation Menu"
+      class="flex h-10 w-10 flex-col items-center justify-center space-y-1.5 focus:outline-none lg:hidden"
+    >
+      <span class="h-0.5 w-6 rounded bg-[#6B5D4F]"></span>
+      <span class="h-0.5 w-6 rounded bg-[#6B5D4F]"></span>
+      <span class="h-0.5 w-6 rounded bg-[#6B5D4F]"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Drawer Overlay -->
+  <div
+    id="mobile-drawer"
+    class="fixed inset-0 z-50 flex translate-x-full flex-col justify-between bg-[#F3F2EE] p-8 text-[#2C2C2C] transition-transform duration-500 lg:hidden"
+  >
+    <div class="flex items-center justify-between border-b border-[#E7E3DF] pb-6">
+      <div class="flex items-center space-x-3">
+        <div class="flex h-9 w-9 items-center justify-center rounded-full border border-[#9F9483] bg-[#FFFDF8]">
+          <span class="font-display font-bold text-xs text-[#6B5D4F]">SB</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display text-lg tracking-[0.15em] text-[#6B5D4F]">STORIES BY BHAVIN</span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-[#6B5D4F]/70">Wedding Photographer</span>
+        </div>
+      </div>
+      <button
+        id="mobile-close-btn"
+        type="button"
+        class="flex h-10 w-10 items-center justify-center text-[#6B5D4F]"
+      >
+        <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="my-auto flex flex-col space-y-6 text-center py-8">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="mobile-link text-base uppercase tracking-[0.2em] font-normal text-[#2C2C2C] hover:text-[#6B5D4F] transition-colors"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="border-t border-[#E7E3DF] pt-6 text-center text-xs text-[#6B5D4F]">
+      <p>Mumbai &bull; London &bull; Dubai &bull; Worldwide</p>
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const closeBtn = document.getElementById('mobile-close-btn');
+  const drawer = document.getElementById('mobile-drawer');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  function openMenu() {
+    drawer?.classList.remove('translate-x-full');
+    document.body.classList.add('overflow-hidden');
+  }
+
+  function closeMenu() {
+    drawer?.classList.add('translate-x-full');
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  menuBtn?.addEventListener('click', openMenu);
+  closeBtn?.addEventListener('click', closeMenu);
+  mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+</script>

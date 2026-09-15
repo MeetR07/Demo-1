@@ -1,0 +1,25 @@
+---
+interface Props {
+  image: string;
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+}
+const { image, eyebrow, title, subtitle } = Astro.props;
+---
+
+<div class="relative">
+  <img
+    src={image}
+    alt=""
+    class="h-[70vh] max-h-[640px] w-full object-cover"
+    loading="eager"
+  />
+  <div
+    class="absolute inset-0 flex flex-col items-center justify-center bg-ink/30 px-5 text-center text-paper"
+  >
+    {eyebrow && <p class="mb-3 text-xs uppercase tracking-[0.2em]">{eyebrow}</p>}
+    <h1 class="max-w-3xl text-4xl sm:text-5xl">{title}</h1>
+    {subtitle && <p class="mt-4 max-w-xl text-base opacity-90">{subtitle}</p>}
+  </div>
+</div>

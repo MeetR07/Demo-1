@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FilmSection from "../../components/FilmSection.astro";
+---
+
+<BaseLayout title="Cinematic Films | Stories by Bhavin" description="Explore cinematic wedding teasers and trailers crafted with high-end color grading and emotional storytelling.">
+  <!-- Header Banner -->
+  <section class="w-full bg-[#1E1C1A] py-24 text-white text-center">
+    <div class="mx-auto max-w-4xl px-6">
+      <span class="text-xs uppercase tracking-[0.3em] text-[#9F9483] font-semibold block mb-3">
+        Cinematic Motion
+      </span>
+      <h1 class="font-display text-4xl sm:text-6xl font-normal tracking-wide text-white mb-4">
+        Wedding Films & Teasers
+      </h1>
+      <p class="text-xs sm:text-sm text-white/70 max-w-lg mx-auto font-light leading-relaxed">
+        Moving pictures that capture the laughter, music, speeches, and unscripted joy of your wedding day.
+      </p>
+    </div>
+  </section>
+
+  <!-- Film Showcase Component -->
+  <FilmSection />
+</BaseLayout>

@@ -1,0 +1,209 @@
+---
+---
+
+<section id="inquire" class="w-full bg-paper py-24 border-t border-border-light">
+  <div class="mx-auto max-w-4xl px-6 md:px-10">
+    <div class="text-center mb-12">
+      <span class="text-xs uppercase tracking-[0.3em] text-gold font-semibold block mb-2">
+        Let's Connect
+      </span>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold text-ink mb-4">
+        Reserve Your Date
+      </h2>
+      <p class="text-sm text-ink-muted max-w-xl mx-auto font-light leading-relaxed">
+        We limit the number of weddings we shoot each season to ensure every couple receives our undivided artistic focus. Fill in your details below and we will get back to you within 24 hours.
+      </p>
+    </div>
+
+    <!-- Form Container -->
+    <div class="glass-card rounded-3xl p-8 sm:p-12 shadow-xl border border-border-light">
+      <form id="booking-inquiry-form" class="space-y-8">
+        <!-- Name Fields -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label for="partner1" class="block text-xs font-semibold uppercase tracking-[0.15em] text-ink mb-2">
+              Your Name *
+            </label>
+            <input
+              type="text"
+              id="partner1"
+              name="partner1"
+              required
+              placeholder="e.g. Ananya Sharma"
+              class="w-full rounded-xl border border-border-light bg-white px-4 py-3.5 text-sm text-ink focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors"
+            />
+          </div>
+          <div>
+            <label for="partner2" class="block text-xs font-semibold uppercase tracking-[0.15em] text-ink mb-2">
+              Fiancé / Partner's Name *
+            </label>
+            <input
+              type="text"
+              id="partner2"
+              name="partner2"
+              required
+              placeholder="e.g. Sidharth Verma"
+              class="w-full rounded-xl border border-border-light bg-white px-4 py-3.5 text-sm text-ink focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors"
+            />
+          </div>
+        </div>
+
+        <!-- Contact Info Fields -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label for="email" class="block text-xs font-semibold uppercase tracking-[0.15em] text-ink mb-2">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="ananya@example.com"
+              class="w-full rounded-xl border border-border-light bg-white px-4 py-3.5 text-sm text-ink focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors"
+            />
+          </div>
+          <div>
+            <label for="phone" class="block text-xs font-semibold uppercase tracking-[0.15em] text-ink mb-2">
+              Phone / WhatsApp Number *
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              placeholder="+91 98765 43210"
+              class="w-full rounded-xl border border-border-light bg-white px-4 py-3.5 text-sm text-ink focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors"
+            />
+          </div>
+        </div>
+
+        <!-- Event Details Fields -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label for="eventDate" class="block text-xs font-semibold uppercase tracking-[0.15em] text-ink mb-2">
+              Wedding Date(s) *
+            </label>
+            <input
+              type="date"
+              id="eventDate"
+              name="eventDate"
+              required
+              class="w-full rounded-xl border border-border-light bg-white px-4 py-3.5 text-sm text-ink focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors"
+            />
+          </div>
+          <div>
+            <label for="location" class="block text-xs font-semibold uppercase tracking-[0.15em] text-ink mb-2">
+              Wedding City / Location *
+            </label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              required
+              placeholder="e.g. Udaipur, Goa, Mumbai"
+              class="w-full rounded-xl border border-border-light bg-white px-4 py-3.5 text-sm text-ink focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors"
+            />
+          </div>
+        </div>
+
+        <!-- Services Needed Checkboxes -->
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-[0.15em] text-ink mb-3">
+            Services Interested In *
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <label class="flex items-center space-x-3 rounded-xl border border-border-light bg-white p-3.5 cursor-pointer hover:border-gold transition-colors">
+              <input type="checkbox" name="services" value="Photography" checked class="h-4 w-4 accent-gold" />
+              <span class="text-xs font-medium text-ink">Fine Art Photography</span>
+            </label>
+            <label class="flex items-center space-x-3 rounded-xl border border-border-light bg-white p-3.5 cursor-pointer hover:border-gold transition-colors">
+              <input type="checkbox" name="services" value="Cinematic Film" checked class="h-4 w-4 accent-gold" />
+              <span class="text-xs font-medium text-ink">Cinematic Wedding Films</span>
+            </label>
+            <label class="flex items-center space-x-3 rounded-xl border border-border-light bg-white p-3.5 cursor-pointer hover:border-gold transition-colors">
+              <input type="checkbox" name="services" value="Pre-Wedding" class="h-4 w-4 accent-gold" />
+              <span class="text-xs font-medium text-ink">Pre-Wedding Story Shoot</span>
+            </label>
+            <label class="flex items-center space-x-3 rounded-xl border border-border-light bg-white p-3.5 cursor-pointer hover:border-gold transition-colors">
+              <input type="checkbox" name="services" value="Fine Art Album" class="h-4 w-4 accent-gold" />
+              <span class="text-xs font-medium text-ink">Flush Mount Heritage Albums</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Message Field -->
+        <div>
+          <label for="message" class="block text-xs font-semibold uppercase tracking-[0.15em] text-ink mb-2">
+            Tell Us About Your Story & Vision
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            placeholder="Share details about your wedding functions, venue, vibe, or any specific requests..."
+            class="w-full rounded-xl border border-border-light bg-white p-4 text-sm text-ink focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors"
+          ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center pt-2">
+          <button
+            type="submit"
+            class="w-full sm:w-auto min-w-[240px] rounded-full bg-gold px-10 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-ink shadow-lg transition-all duration-300 hover:bg-ink hover:text-gold hover:shadow-xl transform hover:-translate-y-0.5"
+          >
+            Send Inquiry
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Success Confirmation Modal -->
+  <div
+    id="inquiry-success-modal"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+  >
+    <div class="glass-dark max-w-md rounded-3xl p-8 text-center text-paper border border-gold/40 shadow-2xl">
+      <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gold/20 text-gold mb-6">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+
+      <h3 class="font-display text-3xl font-semibold text-gold mb-2">Inquiry Received!</h3>
+      <p class="text-xs text-white/80 leading-relaxed font-light mb-6">
+        Thank you for reaching out to <strong class="text-white">Stories by Bhavin</strong>. We are thrilled about the prospect of capturing your special day. Our team will review your dates and respond within 24 hours.
+      </p>
+
+      <button
+        id="close-success-btn"
+        class="rounded-full bg-gold px-8 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink shadow-md hover:bg-white transition-colors"
+      >
+        Close Window
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('booking-inquiry-form');
+  const successModal = document.getElementById('inquiry-success-modal');
+  const closeSuccessBtn = document.getElementById('close-success-btn');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (successModal) {
+      successModal.classList.remove('opacity-0', 'pointer-events-none');
+      successModal.classList.add('opacity-100');
+      (form as HTMLFormElement).reset();
+    }
+  });
+
+  closeSuccessBtn?.addEventListener('click', () => {
+    if (successModal) {
+      successModal.classList.remove('opacity-100');
+      successModal.classList.add('opacity-0', 'pointer-events-none');
+    }
+  });
+</script>

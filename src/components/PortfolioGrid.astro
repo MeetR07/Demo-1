@@ -1,0 +1,72 @@
+---
+interface WeddingItem {
+  href: string;
+  cover: string;
+  title: string;
+  location: string;
+  date: Date;
+  excerpt?: string;
+}
+
+interface Props {
+  items: WeddingItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="w-full">
+  <!-- Portfolio Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {
+      items.map((item) => (
+        <a
+          href={item.href}
+          class="group relative flex flex-col overflow-hidden rounded-xl bg-white border border-border-light shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl"
+        >
+          <!-- Image Wrapper -->
+          <div class="relative aspect-[4/3] w-full overflow-hidden bg-paper-dark">
+            <img
+              src={item.cover}
+              alt={item.title}
+              class="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-80"></div>
+            
+            <!-- Category Tag -->
+            <div class="absolute top-4 left-4 z-10">
+              <span class="rounded-full bg-paper/90 backdrop-blur-md px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink shadow-sm">
+                Wedding Story
+              </span>
+            </div>
+
+            <!-- Overlay text on mobile/hover -->
+            <div class="absolute bottom-4 left-4 right-4 z-10">
+              <span class="block text-xs uppercase tracking-[0.2em] text-gold font-medium">
+                {item.location}
+              </span>
+              <h3 class="font-display text-2xl font-semibold text-white tracking-wide group-hover:text-gold-light transition-colors">
+                {item.title}
+              </h3>
+            </div>
+          </div>
+
+          <!-- Card Footer Details -->
+          <div class="flex flex-col p-5 bg-paper flex-grow justify-between border-t border-border-light/60">
+            <p class="text-xs text-ink-muted line-clamp-2 leading-relaxed mb-4">
+              {item.excerpt || "An exquisite celebration captured with emotion and fine art aesthetics."}
+            </p>
+
+            <div class="flex items-center justify-between text-xs text-gold font-medium uppercase tracking-[0.15em] pt-2 border-t border-border-light">
+              <span>View Story</span>
+              <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</div>

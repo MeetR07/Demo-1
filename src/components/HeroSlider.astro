@@ -1,0 +1,137 @@
+---
+const slides = [
+  {
+    image: "/images/hero_1.jpg",
+    subtitle: "Wedding Ceremony",
+    title: "INDIA",
+  },
+  {
+    image: "/images/hero_2.jpg",
+    subtitle: "Couple Session",
+    title: "LONDON",
+  },
+  {
+    image: "/images/hero_3.jpg",
+    subtitle: "Destination Wedding",
+    title: "DUBAI",
+  },
+];
+---
+
+<section class="relative h-[85vh] min-h-[580px] w-full overflow-hidden bg-[#1E1C1A]">
+  <!-- Slides Container -->
+  <div id="hero-slider" class="relative h-full w-full">
+    {
+      slides.map((slide, index) => (
+        <div
+          class={`hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === 0 ? "opacity-100 z-10" : "opacity-0 z-0"
+          }`}
+          data-slide-index={index}
+        >
+          <!-- Background Image with Soft Tint -->
+          <div class="absolute inset-0 overflow-hidden">
+            <img
+              src={slide.image}
+              alt={slide.title}
+              class="h-full w-full object-cover object-center transform scale-105 transition-transform duration-10000 ease-out"
+            />
+            <div class="absolute inset-0 bg-black/35"></div>
+          </div>
+
+          <!-- Content Overlay in exact Pixieset / thephotostore.in layout -->
+          <div class="relative z-20 flex h-full flex-col justify-end items-center text-center px-6 pb-24 pt-32 max-w-5xl mx-auto text-white">
+            <span class="font-sans text-xs uppercase tracking-[0.3em] font-light text-white/90 mb-3">
+              {slide.subtitle}
+            </span>
+            <h1 class="font-display text-5xl sm:text-7xl md:text-8xl font-normal tracking-[0.1em] text-white leading-tight mb-8">
+              {slide.title}
+            </h1>
+
+            <!-- Slide Nav Counter -->
+            <div class="flex items-center space-x-6 text-sm tracking-widest text-white/90 pt-4">
+              <button
+                class="hero-prev-btn p-2 hover:text-[#9F9483] transition-colors focus:outline-none"
+                aria-label="Previous slide"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <span class="font-sans font-light text-xs tracking-[0.2em]">
+                <span class="current-slide-num">{index + 1}</span>
+                <span class="opacity-50 mx-1">/</span>
+                <span>{slides.length}</span>
+              </span>
+              <button
+                class="hero-next-btn p-2 hover:text-[#9F9483] transition-colors focus:outline-none"
+                aria-label="Next slide"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.hero-slide');
+  const totalSlides = slides.length;
+  let slideInterval: any;
+
+  function showSlide(index: number) {
+    slides.forEach((slide, i) => {
+      if (i === index) {
+        slide.classList.remove('opacity-0', 'z-0');
+        slide.classList.add('opacity-100', 'z-10');
+      } else {
+        slide.classList.remove('opacity-100', 'z-10');
+        slide.classList.add('opacity-0', 'z-0');
+      }
+    });
+    currentSlide = index;
+  }
+
+  function nextSlide() {
+    const next = (currentSlide + 1) % totalSlides;
+    showSlide(next);
+  }
+
+  function prevSlide() {
+    const prev = (currentSlide - 1 + totalSlides) % totalSlides;
+    showSlide(prev);
+  }
+
+  document.querySelectorAll('.hero-next-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      nextSlide();
+      resetTimer();
+    });
+  });
+
+  document.querySelectorAll('.hero-prev-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      prevSlide();
+      resetTimer();
+    });
+  });
+
+  function startTimer() {
+    slideInterval = setInterval(nextSlide, 6000);
+  }
+
+  function resetTimer() {
+    clearInterval(slideInterval);
+    startTimer();
+  }
+
+  startTimer();
+</script>

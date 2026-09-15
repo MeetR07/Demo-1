@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSlider from "../components/HeroSlider.astro";
+import MiddleGrid from "../components/MiddleGrid.astro";
+import FeaturedWeddingsBlock from "../components/FeaturedWeddingsBlock.astro";
+import CinemaMomentsBanner from "../components/CinemaMomentsBanner.astro";
+import FilmSection from "../components/FilmSection.astro";
+import Testimonials from "../components/Testimonials.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+---
+
+<BaseLayout title="Wedding Photographer in Mumbai ( STORIES BY BHAVIN )">
+  <!-- Section 1: Hero Carousel Header -->
+  <HeroSlider />
+
+  <!-- Section 2: Locations Quote Banner -->
+  <section class="w-full bg-[#F3F2EE] py-16 border-b border-[#E7E3DF] text-center">
+    <div class="mx-auto max-w-[1480px] px-4 sm:px-8">
+      <h2 class="font-display text-2xl sm:text-4xl uppercase tracking-[0.2em] font-normal text-[#6B5D4F] mb-3">
+        "MUMBAI - UDAIPUR - GOA - DUBAI - LONDON"
+      </h2>
+      <p class="text-xs uppercase tracking-[0.25em] text-[#6B5D4F]/80 font-sans font-light">
+        — AVAILABLE WORLDWIDE
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 3: Bio / Story Grid Block (Wider Layout with Reduced Side Spacing) -->
+  <section class="w-full bg-[#F3F2EE] py-24 border-b border-[#E7E3DF]">
+    <div class="mx-auto max-w-[1480px] px-4 sm:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Left Vertical Photo -->
+        <div class="lg:col-span-4 overflow-hidden rounded-lg border border-[#E7E3DF] shadow-md group">
+          <img
+            src="/images/udaipur.jpg"
+            alt="Wedding portrait"
+            class="w-full h-[480px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Middle Text Philosophy Block -->
+        <div class="lg:col-span-5 space-y-5 py-4 px-2 sm:px-4">
+          <h3 class="font-display text-3xl sm:text-4xl font-medium text-[#6B5D4F] leading-snug">
+            “Tradition redefined through modern storytelling.”
+          </h3>
+          
+          <div class="space-y-4 text-xs sm:text-sm text-[#2C2C2C] leading-relaxed font-light">
+            <p class="font-medium text-[#2C2C2C]">
+              Recognized for its artistic vision and emotional storytelling, Stories by Bhavin has been redefining wedding photography and cinematography across India since 2017.
+            </p>
+            <p>
+              Stories by Bhavin is known for its seamless blend of tradition and modern aesthetics, capturing weddings that are as timeless as they are visually striking. With a strong focus on emotion-driven narratives, our team has had the honor of documenting hundreds of love stories, turning fleeting moments into cherished memories.
+            </p>
+            <p>
+              From intimate gatherings to grand destination celebrations, we have consistently delivered work that resonates with couples and stands out for its cinematic beauty and editorial finesse.
+            </p>
+            <p class="font-medium text-[#2C2C2C]">
+              With over 9 years of experience, features across wedding platforms, and a portfolio spanning luxury venues across India and beyond, Stories by Bhavin continues to be a trusted name for couples who value authenticity, elegance, and artistry.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Side Secondary Photo -->
+        <div class="lg:col-span-3 overflow-hidden rounded-lg border border-[#E7E3DF] shadow-md hidden lg:block group">
+          <img
+            src="/images/hero_1.jpg"
+            alt="Candid moment"
+            class="w-full h-[480px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Middle Multi-Photo Gallery Grid (12 Photos with Lightbox) -->
+  <MiddleGrid />
+
+  <!-- Section 5: Featured Wedding Cards Block (Matching Screenshot 1 & 2) -->
+  <FeaturedWeddingsBlock />
+
+  <!-- Section 6: Cinema Moments Dark Banner (Matching Screenshot 2) -->
+  <CinemaMomentsBanner />
+
+  <!-- Section 7: Wedding Films 2x2 Grid (Matching Screenshots 3 & 4) -->
+  <FilmSection />
+
+  <!-- Section 8: Testimonials Slider (Matching Screenshot 5) -->
+  <Testimonials />
+
+  <!-- Section 9: FAQ Accordion -->
+  <FaqAccordion />
+
+  <!-- Section 10: Booking & Inquiry Form -->
+  <InquiryForm />
+</BaseLayout>

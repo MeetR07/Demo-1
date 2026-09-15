@@ -1,0 +1,87 @@
+---
+const faqs = [
+  {
+    q: "How early should we book our wedding dates?",
+    a: "We recommend reserving your dates 6 to 12 months in advance, especially for popular destination wedding months (October through March). Since we limit our annual wedding bookings to ensure artistic focus, dates are locked on a first-come basis.",
+  },
+  {
+    q: "Do you travel for destination weddings?",
+    a: "Absolutely! We love destination weddings. Over 70% of our weddings are outside Mumbai — including Rajasthan, Goa, Kerala, Himachal Pradesh, Dubai, Bali, and Europe.",
+  },
+  {
+    q: "What is your photography and filmmaking style?",
+    a: "Our signature style is fine-art documentary: timeless, emotion-led, and candid. We blend elegant editorial portraits with unscripted moment capturing. We avoid stiff posing, focusing instead on real emotions and natural lighting.",
+  },
+  {
+    q: "When will we receive our photos and films?",
+    a: "You will receive a curated 'Sneak Peek' of 30-40 edited high-res photos within 72 hours of your wedding. The full digital gallery of high-resolution edited images is delivered within 4-6 weeks, and the cinematic wedding teaser & film trailer within 6-8 weeks.",
+  },
+  {
+    q: "Do you offer custom package customization?",
+    a: "Yes. Every wedding celebration is unique. Whether you require a single day intimately intimate ceremony or a 4-day grand palace extravaganza with drone coverage, we tailor our packages to suit your exact timeline and requirements.",
+  },
+];
+---
+
+<section id="faqs" class="w-full bg-paper py-24 border-t border-border-light">
+  <div class="mx-auto max-w-4xl px-6 md:px-10">
+    <div class="text-center mb-16">
+      <span class="text-xs uppercase tracking-[0.3em] text-gold font-semibold block mb-2">
+        Information
+      </span>
+      <h2 class="font-display text-4xl sm:text-5xl font-semibold text-ink mb-4">
+        Frequently Asked Questions
+      </h2>
+      <div class="w-12 h-0.5 bg-gold mx-auto"></div>
+    </div>
+
+    <!-- Accordion Items -->
+    <div class="space-y-4">
+      {
+        faqs.map((faq, index) => (
+          <div class="faq-item rounded-2xl border border-border-light bg-white/70 backdrop-blur-md overflow-hidden transition-all duration-300">
+            <button
+              class="faq-toggle flex w-full items-center justify-between p-6 text-left focus:outline-none"
+              data-index={index}
+            >
+              <span class="font-display text-lg font-medium text-ink pr-4">
+                {faq.q}
+              </span>
+              <span class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-paper text-ink transition-transform duration-300">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6 text-xs sm:text-sm text-ink-muted leading-relaxed font-light border-t border-border-light/40 pt-4">
+              {faq.a}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const toggles = document.querySelectorAll('.faq-toggle');
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const item = toggle.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer');
+      const icon = item?.querySelector('.faq-icon');
+
+      const isOpen = !answer?.classList.contains('hidden');
+
+      // Close all
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+      document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('rotate-180', 'bg-gold', 'text-ink'));
+
+      if (!isOpen && answer && icon) {
+        answer.classList.remove('hidden');
+        icon.classList.add('rotate-180', 'bg-gold', 'text-ink');
+      }
+    });
+  });
+</script>

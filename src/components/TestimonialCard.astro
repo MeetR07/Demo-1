@@ -1,0 +1,13 @@
+---
+interface Props {
+  quote: string;
+  names: string;
+  location: string;
+}
+const { quote, names, location } = Astro.props;
+---
+
+<figure class="rounded border border-rule bg-white/40 p-6">
+  <blockquote class="font-display text-lg text-ink">&ldquo;{quote}&rdquo;</blockquote>
+  <figcaption class="mt-4 text-sm text-inksoft">{names} &middot; {location}</figcaption>
+</figure>
