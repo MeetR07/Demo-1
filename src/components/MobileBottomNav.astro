@@ -10,9 +10,10 @@ const isContact = pathname.startsWith("/contact");
 <nav
   id="mobile-bottom-bar"
   class="fixed bottom-0 left-0 right-0 z-[100] block lg:hidden w-full border-t border-[#E8E2D9] bg-[#FAF8F5]/98 backdrop-blur-xl shadow-[0_-4px_25px_rgba(0,0,0,0.08)] select-none"
+  style="padding-bottom: max(6px, env(safe-area-inset-bottom));"
   aria-label="Mobile bottom navigation"
 >
-  <div class="grid grid-cols-5 items-center w-full max-w-md mx-auto px-1 py-1.5">
+  <div class="grid grid-cols-5 items-center w-full max-w-md mx-auto px-0.5 py-1">
     <!-- 1. Home -->
     <a
       href="/"

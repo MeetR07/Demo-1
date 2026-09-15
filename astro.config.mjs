@@ -7,5 +7,9 @@ import tailwind from "@astrojs/tailwind";
 // the sitemap and canonical URLs are generated from this value.
 export default defineConfig({
   site: "https://www.example-photostudio.com",
+  server: {
+    host: true,
+    port: 4321,
+  },
   integrations: [mdx(), sitemap(), tailwind({ applyBaseStyles: false })],
 });
