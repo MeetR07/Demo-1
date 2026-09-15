@@ -3,96 +3,127 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroSlider from "../components/HeroSlider.astro";
 import MiddleGrid from "../components/MiddleGrid.astro";
 import FeaturedWeddingsBlock from "../components/FeaturedWeddingsBlock.astro";
+import QuickDateChecker from "../components/QuickDateChecker.astro";
 import CinemaMomentsBanner from "../components/CinemaMomentsBanner.astro";
 import FilmSection from "../components/FilmSection.astro";
+import ExperiencePackages from "../components/ExperiencePackages.astro";
 import Testimonials from "../components/Testimonials.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import InquiryForm from "../components/InquiryForm.astro";
+import MobileBottomNav from "../components/MobileBottomNav.astro";
 ---
 
-<BaseLayout title="Wedding Photographer in Mumbai ( STORIES BY BHAVIN )">
-  <!-- Section 1: Hero Carousel Header -->
+<BaseLayout title="Fine Art Wedding Photographer & Films ( STORIES BY BHAVIN )">
+  <!-- Section 1: Hero Carousel Header with Swipe & Dual CTAs -->
   <HeroSlider />
 
-  <!-- Section 2: Locations Quote Banner -->
-  <section class="w-full bg-[#F3F2EE] py-16 border-b border-[#E7E3DF] text-center">
+  <!-- Section 2: Locations & Destination Marquee Banner -->
+  <section class="w-full bg-[#FAF8F5] py-10 sm:py-14 border-b border-[#E8E2D9] text-center overflow-hidden">
     <div class="mx-auto max-w-[1480px] px-4 sm:px-8">
-      <h2 class="font-display text-2xl sm:text-4xl uppercase tracking-[0.2em] font-normal text-[#6B5D4F] mb-3">
-        "MUMBAI - UDAIPUR - GOA - DUBAI - LONDON"
+      <div class="flex items-center justify-center space-x-2 text-[10px] uppercase tracking-[0.3em] text-[#C5A059] font-medium mb-3">
+        <span>&bull;</span>
+        <span>Worldwide Destination Coverage</span>
+        <span>&bull;</span>
+      </div>
+      <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl font-normal uppercase tracking-[0.18em] text-[#574838]">
+        Mumbai &bull; Udaipur &bull; Jaipur &bull; Goa &bull; Dubai &bull; London
       </h2>
-      <p class="text-xs uppercase tracking-[0.25em] text-[#6B5D4F]/80 font-sans font-light">
-        — AVAILABLE WORLDWIDE
-      </p>
     </div>
   </section>
 
-  <!-- Section 3: Bio / Story Grid Block (Wider Layout with Reduced Side Spacing) -->
-  <section class="w-full bg-[#F3F2EE] py-24 border-b border-[#E7E3DF]">
+  <!-- Section 3: Bio / Story Editorial Block with Stats Counter -->
+  <section class="w-full bg-[#FAF8F5] py-20 sm:py-28 border-b border-[#E8E2D9]">
     <div class="mx-auto max-w-[1480px] px-4 sm:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <!-- Left Vertical Photo -->
-        <div class="lg:col-span-4 overflow-hidden rounded-lg border border-[#E7E3DF] shadow-md group">
-          <img
-            src="/images/udaipur.jpg"
-            alt="Wedding portrait"
-            class="w-full h-[480px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
-            loading="lazy"
-          />
-        </div>
-
-        <!-- Middle Text Philosophy Block -->
-        <div class="lg:col-span-5 space-y-5 py-4 px-2 sm:px-4">
-          <h3 class="font-display text-3xl sm:text-4xl font-medium text-[#6B5D4F] leading-snug">
-            “Tradition redefined through modern storytelling.”
-          </h3>
-          
-          <div class="space-y-4 text-xs sm:text-sm text-[#2C2C2C] leading-relaxed font-light">
-            <p class="font-medium text-[#2C2C2C]">
-              Recognized for its artistic vision and emotional storytelling, Stories by Bhavin has been redefining wedding photography and cinematography across India since 2017.
-            </p>
-            <p>
-              Stories by Bhavin is known for its seamless blend of tradition and modern aesthetics, capturing weddings that are as timeless as they are visually striking. With a strong focus on emotion-driven narratives, our team has had the honor of documenting hundreds of love stories, turning fleeting moments into cherished memories.
-            </p>
-            <p>
-              From intimate gatherings to grand destination celebrations, we have consistently delivered work that resonates with couples and stands out for its cinematic beauty and editorial finesse.
-            </p>
-            <p class="font-medium text-[#2C2C2C]">
-              With over 9 years of experience, features across wedding platforms, and a portfolio spanning luxury venues across India and beyond, Stories by Bhavin continues to be a trusted name for couples who value authenticity, elegance, and artistry.
-            </p>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <!-- Left Vertical Photo with Mat Effect -->
+        <div class="lg:col-span-5 overflow-hidden rounded-3xl border border-[#E8E2D9] bg-white p-3 sm:p-4 shadow-xl group">
+          <div class="relative overflow-hidden rounded-2xl aspect-[3/4] max-h-[520px]">
+            <img
+              src="/images/udaipur.jpg"
+              alt="Luxury wedding couple portrait"
+              class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+              loading="lazy"
+            />
+            <div class="absolute bottom-4 left-4 right-4 rounded-xl bg-black/60 backdrop-blur-md p-3.5 text-white border border-white/20">
+              <span class="text-[9px] uppercase tracking-[0.25em] text-[#DFC289] font-mono">Stories by Bhavin</span>
+              <p class="font-display text-sm tracking-wide mt-0.5">"Capturing love as a timeless heirloom"</p>
+            </div>
           </div>
         </div>
 
-        <!-- Right Side Secondary Photo -->
-        <div class="lg:col-span-3 overflow-hidden rounded-lg border border-[#E7E3DF] shadow-md hidden lg:block group">
-          <img
-            src="/images/hero_1.jpg"
-            alt="Candid moment"
-            class="w-full h-[480px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
-            loading="lazy"
-          />
+        <!-- Middle Text Philosophy Block -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center space-x-2 rounded-full border border-[#C5A059]/40 bg-[#FFFDF9] px-4 py-1.5 shadow-sm">
+            <span class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#C5A059] font-semibold">
+              The Philosophy
+            </span>
+          </div>
+
+          <h3 class="font-display text-3xl sm:text-5xl font-normal text-[#574838] leading-tight">
+            “Tradition redefined through modern editorial storytelling.”
+          </h3>
+          
+          <div class="space-y-4 text-xs sm:text-sm text-[#78716C] leading-relaxed font-light">
+            <p class="text-[#1C1917] font-medium leading-relaxed">
+              Recognized for its artistic vision and emotional storytelling, Stories by Bhavin has been redefining fine-art wedding photography and cinematography across India and international destinations since 2017.
+            </p>
+            <p>
+              We believe great wedding imagery shouldn't feel staged or rehearsed. Our team blends editorial elegance with pure documentary discretion — ensuring you remain immersed in your celebrations while we immortalize every quiet glance, joyous tear, and ecstatic dance.
+            </p>
+          </div>
+
+          <!-- Stats Grid: 4 Pillars of Excellence -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-[#E8E2D9]">
+            <div class="rounded-2xl bg-white p-4 border border-[#E8E2D9] text-center shadow-sm">
+              <span class="font-display text-3xl sm:text-4xl font-normal text-[#C5A059] block">9+</span>
+              <span class="text-[10px] uppercase tracking-wider text-[#78716C]">Years Crafting</span>
+            </div>
+            <div class="rounded-2xl bg-white p-4 border border-[#E8E2D9] text-center shadow-sm">
+              <span class="font-display text-3xl sm:text-4xl font-normal text-[#C5A059] block">350+</span>
+              <span class="text-[10px] uppercase tracking-wider text-[#78716C]">Couples Documented</span>
+            </div>
+            <div class="rounded-2xl bg-white p-4 border border-[#E8E2D9] text-center shadow-sm">
+              <span class="font-display text-3xl sm:text-4xl font-normal text-[#C5A059] block">14+</span>
+              <span class="text-[10px] uppercase tracking-wider text-[#78716C]">Destinations</span>
+            </div>
+            <div class="rounded-2xl bg-white p-4 border border-[#E8E2D9] text-center shadow-sm">
+              <span class="font-display text-3xl sm:text-4xl font-normal text-[#C5A059] block">100%</span>
+              <span class="text-[10px] uppercase tracking-wider text-[#78716C]">Artistic Focus</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 4: Middle Multi-Photo Gallery Grid (12 Photos with Lightbox) -->
+  <!-- Section 4: Curated Photo Gallery with Category Filters & Next/Prev Lightbox -->
   <MiddleGrid />
 
-  <!-- Section 5: Featured Wedding Cards Block (Matching Screenshot 1 & 2) -->
+  <!-- Section 5: Featured Wedding Stories -->
   <FeaturedWeddingsBlock />
 
-  <!-- Section 6: Cinema Moments Dark Banner (Matching Screenshot 2) -->
+  <!-- Section 6: Instant Date Availability Checker Widget -->
+  <QuickDateChecker />
+
+  <!-- Section 7: Cinema Moments Dark Banner -->
   <CinemaMomentsBanner />
 
-  <!-- Section 7: Wedding Films 2x2 Grid (Matching Screenshots 3 & 4) -->
+  <!-- Section 8: Wedding Cinema Highlights (2x2 Grid) -->
   <FilmSection />
 
-  <!-- Section 8: Testimonials Slider (Matching Screenshot 5) -->
+  <!-- Section 9: Investment & Experience Packages -->
+  <ExperiencePackages />
+
+  <!-- Section 10: Couple Testimonials Slider -->
   <Testimonials />
 
-  <!-- Section 9: FAQ Accordion -->
+  <!-- Section 11: FAQ Accordion -->
   <FaqAccordion />
 
-  <!-- Section 10: Booking & Inquiry Form -->
+  <!-- Section 12: Booking & Inquiry Form -->
   <InquiryForm />
+
+  <!-- Native Mobile Bottom Navigation Dock (Visible on mobile/tablets) -->
+  <MobileBottomNav />
 </BaseLayout>
+

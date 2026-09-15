@@ -1,0 +1,163 @@
+---
+const packages = [
+  {
+    name: "The Intimate Memoir",
+    tagline: "For intimate ceremonies, civil weddings & single-day celebrations",
+    badge: "Intimate Weddings",
+    highlight: false,
+    coverage: "1 Full Day Coverage (Up to 10 Hours)",
+    features: [
+      "Lead Fine Art Photographer",
+      "High-Resolution Curated Online Gallery",
+      "Express 72-Hour Sneak Peek (40 Edited Photos)",
+      "High-Res Print Release Rights",
+      "Standard Web Delivery within 4 Weeks",
+    ],
+    serviceValue: "Photography",
+  },
+  {
+    name: "The Heritage Heirloom",
+    tagline: "Our most requested bespoke coverage for multi-day destination celebrations",
+    badge: "Most Popular",
+    highlight: true,
+    coverage: "2 to 3 Days Full Festival Coverage",
+    features: [
+      "Team of 2 Senior Photographers + 2 Cinematographers",
+      "Licensed Drone Pilot & 4K Aerial Cinematography",
+      "3-5 Min Cinematic Highlight Trailer + 25-35 Min Feature Film",
+      "Two 12x12 Handcrafted Flush-Mount Leather Albums",
+      "Pre-Wedding Couple Editorial Shoot Included",
+      "72-Hour Sneak Peek + Online Proofing Suite",
+    ],
+    serviceValue: "Photography,Cinematic Film,Fine Art Album",
+  },
+  {
+    name: "The Royal Extravaganza",
+    tagline: "The ultimate luxury heirloom experience with Bhavin personally directing",
+    badge: "Ultra Luxury",
+    highlight: false,
+    coverage: "3 to 5 Days Grand Destination Weddings",
+    features: [
+      "Personally Directed & Shot by Bhavin & Master Crew",
+      "Full Candid, Traditional & Aerial Coverage across all events",
+      "Same-Day Edit (SDE) Teaser for Reception Screening",
+      "Three 14x14 Italian Silk & Acrylic Heirloom Albums",
+      "Dedicated Client Experience Concierge",
+      "Archival Handcrafted Wooden USB Box & Custom Keepsake",
+    ],
+    serviceValue: "Photography,Cinematic Film,Pre-Wedding,Fine Art Album",
+  },
+];
+---
+
+<section id="packages" class="w-full bg-[#FAF8F5] py-20 sm:py-28 border-b border-[#E8E2D9]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-8">
+    <div class="text-center mb-14 sm:mb-16">
+      <div class="inline-flex items-center space-x-2 rounded-full border border-[#C5A059]/40 bg-[#FFFDF9] px-4 py-1.5 mb-3 shadow-sm">
+        <span class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#C5A059] font-semibold">
+          Investment & Experience
+        </span>
+      </div>
+      <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl font-normal text-[#574838]">
+        Bespoke Wedding Collections
+      </h2>
+      <p class="text-xs sm:text-sm text-[#78716C] max-w-xl mx-auto font-light leading-relaxed mt-3">
+        Every love story is unique. We tailor our teams, cameras, and timeline around your sacred rituals and celebration flow.
+      </p>
+    </div>
+
+    <!-- 3 Package Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+      {
+        packages.map((pkg) => (
+          <div
+            class={`relative flex flex-col justify-between rounded-3xl p-6 sm:p-8 transition-all duration-500 hover:-translate-y-2 ${
+              pkg.highlight
+                ? "bg-[#12100E] text-white border-2 border-[#C5A059] shadow-2xl scale-102 lg:-my-3"
+                : "bg-white text-[#1C1917] border border-[#E8E2D9] shadow-md hover:shadow-xl"
+            }`}
+          >
+            <!-- Badge -->
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class={`rounded-full px-3.5 py-1 text-[10px] uppercase tracking-[0.2em] font-semibold ${
+                    pkg.highlight
+                      ? "bg-[#C5A059] text-[#12100E]"
+                      : "bg-[#FAF8F5] text-[#574838] border border-[#E8E2D9]"
+                  }`}
+                >
+                  {pkg.badge}
+                </span>
+              </div>
+
+              <h3 class={`font-display text-2xl sm:text-3xl font-normal mb-2 ${pkg.highlight ? "text-white" : "text-[#574838]"}`}>
+                {pkg.name}
+              </h3>
+              <p class={`text-xs font-light leading-relaxed mb-6 ${pkg.highlight ? "text-white/70" : "text-[#78716C]"}`}>
+                {pkg.tagline}
+              </p>
+
+              <!-- Coverage Duration Bar -->
+              <div
+                class={`flex items-center space-x-2 rounded-xl p-3 mb-6 text-xs font-medium ${
+                  pkg.highlight ? "bg-white/10 text-[#DFC289]" : "bg-[#FAF8F5] text-[#574838] border border-[#E8E2D9]"
+                }`}
+              >
+                <svg class="w-4 h-4 shrink-0 text-[#C5A059]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{pkg.coverage}</span>
+              </div>
+
+              <!-- Feature Inclusions -->
+              <ul class="space-y-3.5 mb-8">
+                {pkg.features.map((feature) => (
+                  <li class="flex items-start space-x-3 text-xs leading-relaxed font-light">
+                    <svg
+                      class={`w-4 h-4 shrink-0 mt-0.5 ${pkg.highlight ? "text-[#C5A059]" : "text-[#574838]"}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class={pkg.highlight ? "text-white/90" : "text-[#44403C]"}>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Action Button -->
+            <div class="pt-4 border-t border-white/10">
+              <a
+                href="#inquire"
+                class={`package-select-btn flex w-full items-center justify-center space-x-2 rounded-full py-3.5 text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 shadow-md ${
+                  pkg.highlight
+                    ? "bg-[#C5A059] text-[#12100E] hover:bg-white hover:text-black"
+                    : "bg-[#574838] text-white hover:bg-[#C5A059]"
+                }`}
+                data-package={pkg.name}
+              >
+                <span>Inquire For This Collection</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Custom note -->
+    <div class="mt-12 text-center">
+      <p class="text-xs text-[#78716C] font-light">
+        Looking for a bespoke multi-destination itinerary or pre-wedding shoot in Europe/Dubai?{" "}
+        <a href="#inquire" class="text-[#574838] font-semibold underline hover:text-[#C5A059]">
+          Contact us directly for custom tailoring.
+        </a>
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,62 +1,96 @@
 ---
+const categories = ["All", "Ceremony", "Royal Heritage", "Reception & Sangeet", "Portraits"];
+
 const gridPhotos = [
-  { src: "/images/grid_1.jpg", title: "Royal B&W Portrait", category: "Bridal Editorial" },
-  { src: "/images/grid_4.jpg", title: "Sun-Drenched Haldi", category: "Ceremony" },
-  { src: "/images/grid_2.jpg", title: "Champagne Tower Pour", category: "Reception" },
-  { src: "/images/grid_5.jpg", title: "Sangeet Pyros Dance", category: "Sangeet Night" },
-  { src: "/images/grid_3.jpg", title: "Phoolon Ki Chadar", category: "Bridal Entry" },
-  { src: "/images/udaipur.jpg", title: "Udaipur Palace Courtyard", category: "Destination" },
-  { src: "/images/jaipur.jpg", title: "Jaipur Heritage Frescoes", category: "Heritage Royal" },
-  { src: "/images/hero_1.jpg", title: "Rajasthan Sunset Glow", category: "Couple Portrait" },
-  { src: "/images/hero_2.jpg", title: "Goa Beach Romance", category: "Pre-Wedding" },
-  { src: "/images/hero_3.jpg", title: "Night Fireworks Canopy", category: "Grand Reception" },
-  { src: "/images/film_1.jpg", title: "Mandap Laughter", category: "Candid Moments" },
-  { src: "/images/film_2.jpg", title: "Taj Lands End Whirl", category: "Mumbai Moments" },
+  { src: "/images/grid_1.jpg", title: "Royal B&W Portrait", category: "Portraits", tag: "Royal Heritage" },
+  { src: "/images/grid_4.jpg", title: "Sun-Drenched Haldi Joy", category: "Ceremony", tag: "Ceremony" },
+  { src: "/images/grid_2.jpg", title: "Champagne Tower Pour", category: "Reception & Sangeet", tag: "Reception & Sangeet" },
+  { src: "/images/grid_5.jpg", title: "Sangeet Pyros Energy", category: "Reception & Sangeet", tag: "Reception & Sangeet" },
+  { src: "/images/grid_3.jpg", title: "Phoolon Ki Chadar Entry", category: "Ceremony", tag: "Ceremony" },
+  { src: "/images/udaipur.jpg", title: "Udaipur Palace Courtyard", category: "Royal Heritage", tag: "Royal Heritage" },
+  { src: "/images/jaipur.jpg", title: "Jaipur Heritage Frescoes", category: "Royal Heritage", tag: "Royal Heritage" },
+  { src: "/images/hero_1.jpg", title: "Rajasthan Sunset Glow", category: "Portraits", tag: "Portraits" },
+  { src: "/images/hero_2.jpg", title: "Goa Beach Romance", category: "Portraits", tag: "Portraits" },
+  { src: "/images/hero_3.jpg", title: "Night Fireworks Canopy", category: "Reception & Sangeet", tag: "Reception & Sangeet" },
+  { src: "/images/film_1.jpg", title: "Mandap Laughter & Bliss", category: "Ceremony", tag: "Ceremony" },
+  { src: "/images/film_2.jpg", title: "Taj Lands End Whirl", category: "Portraits", tag: "Portraits" },
 ];
 ---
 
-<section class="w-full bg-[#F3F2EE] py-20 border-b border-[#E7E3DF]">
+<section id="gallery" class="w-full bg-[#FAF8F5] py-20 sm:py-24 border-b border-[#E8E2D9]">
   <div class="mx-auto max-w-[1480px] px-4 sm:px-8">
-    <div class="text-center mb-12">
-      <span class="text-xs uppercase tracking-[0.3em] text-[#6B5D4F] font-semibold block mb-2">
-        Curated Gallery
-      </span>
-      <h2 class="font-display text-3xl sm:text-5xl font-normal text-[#6B5D4F]">
+    <!-- Header Section -->
+    <div class="text-center mb-10 sm:mb-12">
+      <div class="inline-flex items-center space-x-2 rounded-full border border-[#C5A059]/40 bg-[#FFFDF9] px-4 py-1.5 mb-3 shadow-sm">
+        <span class="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#C5A059] font-semibold">
+          Curated Gallery
+        </span>
+      </div>
+      <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl font-normal text-[#574838] tracking-tight">
         Moments Frozen In Time
       </h2>
-      <p class="text-xs text-[#2C2C2C] max-w-lg mx-auto font-light leading-relaxed mt-2">
-        Click any photograph to view in full-resolution lightbox viewer.
+      <p class="text-xs sm:text-sm text-[#78716C] max-w-lg mx-auto font-light leading-relaxed mt-2.5">
+        A glimpse into the heartfelt laughter, unscripted glances, and grand celebrations captured across our travels.
       </p>
+
+      <!-- Interactive Category Filter Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-8">
+        {
+          categories.map((cat, idx) => (
+            <button
+              class={`gallery-filter-btn rounded-full px-4 sm:px-5 py-2 text-[11px] sm:text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 ${
+                idx === 0
+                  ? "bg-[#574838] text-white shadow-md active-tab"
+                  : "bg-white border border-[#E8E2D9] text-[#574838] hover:border-[#C5A059] hover:text-[#C5A059]"
+              }`}
+              data-filter={cat}
+            >
+              {cat}
+            </button>
+          ))
+        }
+      </div>
     </div>
 
-    <!-- 3-Column / 4-Column Responsive Masonry Grid with Reduced Side Spacing -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+    <!-- 2-Column on Mobile, 3-Column on Tablet, 4-Column on Desktop Grid -->
+    <div id="gallery-grid-container" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5 md:gap-6">
       {
-        gridPhotos.map((photo) => (
+        gridPhotos.map((photo, index) => (
           <div
-            class="middle-photo-item group relative aspect-square overflow-hidden bg-[#1E1C1A] cursor-pointer rounded-lg border border-[#E7E3DF] shadow-sm transform transition-all duration-500 hover:-translate-y-1 hover:shadow-xl"
+            class="gallery-item group relative aspect-square overflow-hidden bg-[#12100E] cursor-pointer rounded-xl border border-[#E8E2D9] shadow-sm transform transition-all duration-500 hover:-translate-y-1 hover:shadow-xl"
             data-src={photo.src}
             data-title={photo.title}
+            data-category={photo.category}
+            data-tag={photo.tag}
+            data-index={index}
           >
             <img
               src={photo.src}
               alt={photo.title}
-              class="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110 opacity-95 group-hover:opacity-100"
+              class="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
               loading="lazy"
             />
             
-            <!-- Hover Overlay Info -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-6">
-              <span class="text-[10px] uppercase tracking-[0.25em] text-[#9F9483] font-semibold">
-                {photo.category}
-              </span>
+            <!-- Elegant Gradient & Info Hover Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3.5 sm:p-5">
+              <div class="flex justify-between items-start">
+                <span class="rounded-full bg-black/40 backdrop-blur-md px-2.5 py-0.5 text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-[#DFC289] font-medium border border-white/20">
+                  {photo.category}
+                </span>
+                <div class="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                  </svg>
+                </div>
+              </div>
+
               <div>
-                <h4 class="font-display text-xl text-white font-normal mb-2">
+                <h4 class="font-display text-sm sm:text-lg text-white font-normal leading-snug mb-1">
                   {photo.title}
                 </h4>
-                <span class="inline-flex items-center text-[10px] uppercase tracking-[0.2em] text-[#9F9483] font-medium">
-                  View Photo
-                  <svg class="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span class="inline-flex items-center text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-[#DFC289] font-medium">
+                  View Full Resolution
+                  <svg class="w-2.5 h-2.5 sm:w-3 sm:h-3 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </span>
@@ -68,49 +102,131 @@ const gridPhotos = [
     </div>
   </div>
 
-  <!-- Interactive Lightbox Modal -->
+  <!-- Interactive Lightbox Modal with Next/Prev Navigation -->
   <div
     id="middle-grid-lightbox"
-    class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-3 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300 select-none"
   >
+    <!-- Close Button -->
     <button
       id="close-lightbox-btn"
-      class="absolute top-6 right-6 text-white/80 hover:text-white p-2 focus:outline-none"
+      class="absolute top-4 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md hover:bg-white/20 focus:outline-none transition-all"
       aria-label="Close Lightbox"
     >
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
-    <div class="flex flex-col items-center max-w-[90vw] max-h-[85vh]">
-      <img
-        id="lightbox-img"
-        src=""
-        alt=""
-        class="max-h-[80vh] max-w-[90vw] object-contain rounded shadow-2xl"
-      />
-      <h4 id="lightbox-caption" class="font-display text-lg text-white font-light tracking-wider mt-4"></h4>
+
+    <!-- Prev Button -->
+    <button
+      id="lightbox-prev-btn"
+      class="absolute left-3 sm:left-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md hover:bg-white/30 focus:outline-none transition-all"
+      aria-label="Previous image"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Next Button -->
+    <button
+      id="lightbox-next-btn"
+      class="absolute right-3 sm:right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md hover:bg-white/30 focus:outline-none transition-all"
+      aria-label="Next image"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <!-- Image & Caption Container -->
+    <div class="flex flex-col items-center max-w-[94vw] max-h-[88vh]">
+      <div class="relative overflow-hidden rounded-xl shadow-2xl bg-black/40">
+        <img
+          id="lightbox-img"
+          src=""
+          alt=""
+          class="max-h-[78vh] max-w-[92vw] object-contain transition-transform duration-300"
+        />
+      </div>
+      
+      <!-- Bottom Metadata Bar -->
+      <div class="flex items-center justify-between w-full max-w-xl px-4 mt-3 text-white">
+        <h4 id="lightbox-caption" class="font-display text-base sm:text-xl text-[#DFC289] font-light tracking-wide"></h4>
+        <span id="lightbox-counter" class="text-xs text-white/60 font-mono tracking-widest"></span>
+      </div>
     </div>
   </div>
 </section>
 
 <script>
-  const photoItems = document.querySelectorAll('.middle-photo-item');
+  const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+  const items = document.querySelectorAll('.gallery-item');
   const lightbox = document.getElementById('middle-grid-lightbox');
   const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
   const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxCounter = document.getElementById('lightbox-counter');
   const closeBtn = document.getElementById('close-lightbox-btn');
+  const nextBtn = document.getElementById('lightbox-next-btn');
+  const prevBtn = document.getElementById('lightbox-prev-btn');
 
-  photoItems.forEach(item => {
+  // Currently visible items for lightbox cycling
+  let visibleItems: HTMLElement[] = Array.from(items) as HTMLElement[];
+  let currentActiveIndex = 0;
+
+  // Filter functionality
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.className = "gallery-filter-btn rounded-full px-4 sm:px-5 py-2 text-[11px] sm:text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 bg-white border border-[#E8E2D9] text-[#574838] hover:border-[#C5A059] hover:text-[#C5A059]";
+      });
+      btn.className = "gallery-filter-btn rounded-full px-4 sm:px-5 py-2 text-[11px] sm:text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 bg-[#574838] text-white shadow-md active-tab";
+
+      const filter = btn.getAttribute('data-filter');
+
+      visibleItems = [];
+      items.forEach(item => {
+        const category = item.getAttribute('data-category');
+        const tag = item.getAttribute('data-tag');
+        if (filter === 'All' || category === filter || tag === filter) {
+          (item as HTMLElement).style.display = 'block';
+          visibleItems.push(item as HTMLElement);
+        } else {
+          (item as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+
+  function updateLightboxPhoto(index: number) {
+    if (visibleItems.length === 0) return;
+    if (index < 0) index = visibleItems.length - 1;
+    if (index >= visibleItems.length) index = 0;
+
+    currentActiveIndex = index;
+    const activeItem = visibleItems[index];
+    const src = activeItem.getAttribute('data-src') || '';
+    const title = activeItem.getAttribute('data-title') || '';
+
+    if (lightboxImg && lightboxCaption && lightboxCounter) {
+      lightboxImg.src = src;
+      lightboxCaption.textContent = title;
+      lightboxCounter.textContent = `${index + 1} / ${visibleItems.length}`;
+    }
+  }
+
+  // Click on image
+  items.forEach(item => {
     item.addEventListener('click', () => {
-      const src = item.getAttribute('data-src') || '';
-      const title = item.getAttribute('data-title') || '';
-      if (lightbox && lightboxImg && lightboxCaption) {
-        lightboxImg.src = src;
-        lightboxCaption.textContent = title;
-        lightbox.classList.remove('opacity-0', 'pointer-events-none');
-        lightbox.classList.add('opacity-100');
-        document.body.classList.add('overflow-hidden');
+      const idx = visibleItems.indexOf(item as HTMLElement);
+      if (idx !== -1) {
+        updateLightboxPhoto(idx);
+        if (lightbox) {
+          lightbox.classList.remove('opacity-0', 'pointer-events-none');
+          lightbox.classList.add('opacity-100');
+          document.body.classList.add('overflow-hidden');
+        }
       }
     });
   });
@@ -124,7 +240,24 @@ const gridPhotos = [
   }
 
   closeBtn?.addEventListener('click', closeLightbox);
+  nextBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    updateLightboxPhoto(currentActiveIndex + 1);
+  });
+  prevBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    updateLightboxPhoto(currentActiveIndex - 1);
+  });
+
   lightbox?.addEventListener('click', (e) => {
     if (e.target === lightbox) closeLightbox();
+  });
+
+  // Keyboard navigation
+  window.addEventListener('keydown', (e) => {
+    if (!lightbox || lightbox.classList.contains('opacity-0')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') updateLightboxPhoto(currentActiveIndex + 1);
+    if (e.key === 'ArrowLeft') updateLightboxPhoto(currentActiveIndex - 1);
   });
 </script>

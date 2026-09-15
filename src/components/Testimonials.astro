@@ -3,76 +3,100 @@ const reviews = [
   {
     image: "/images/hero_2.jpg",
     couple: "HARSHITA & NICKY",
-    role: "Couple",
+    location: "Goa Beachfront Wedding",
+    stars: 5,
     quote: "We absolutely loved working with Stories by Bhavin! They captured every special moment of our wedding beautifully, and their team made us feel so comfortable and at ease throughout the day. The photos are stunning, full of emotion, and truly tell the story of our day. We couldn't be happier with how everything turned out. Highly recommend them for anyone looking for amazing, heartfelt photography!",
   },
   {
     image: "/images/udaipur.jpg",
     couple: "ANANYA & SIDHARTH",
-    role: "Couple",
-    quote: "Bhavin and his team felt like family from day one. Looking back at our wedding film and album brings tears of joy every single time. Their ability to capture genuine emotion without feeling posed is unmatched!",
+    location: "City Palace, Udaipur",
+    stars: 5,
+    quote: "Bhavin and his team felt like family from day one. Looking back at our wedding film and album brings tears of joy every single time. Their ability to capture genuine emotion without feeling posed is unmatched! Every guest commented on how respectful and unobtrusive the team was.",
   },
   {
     image: "/images/jaipur.jpg",
     couple: "NATASHA & VARUN",
-    role: "Couple",
-    quote: "Pure magic. The cinematic trailer they delivered looks like a Bollywood movie trailer! Professional, discreet, and extremely talented artists who cared about every small detail.",
+    location: "Samode Palace, Jaipur",
+    stars: 5,
+    quote: "Pure magic. The cinematic trailer they delivered looks like a Bollywood movie trailer! Professional, discreet, and extremely talented artists who cared about every small detail. Our heirloom album is the centerpiece of our home.",
   },
 ];
 ---
 
-<section class="relative w-full bg-[#1E1C1A] py-24 text-white overflow-hidden">
-  <!-- Background Image with Blur & Tint Overlay (Matching Screenshot 5) -->
+<section class="relative w-full bg-[#12100E] py-20 sm:py-28 text-white overflow-hidden select-none">
+  <!-- Background Image with Blur & Tint Overlay -->
   <div id="testimonial-bg-wrap" class="absolute inset-0 z-0">
     <img
       id="testimonial-bg-img"
       src="/images/hero_2.jpg"
       alt="Testimonial background"
-      class="h-full w-full object-cover opacity-25 filter blur-md transition-all duration-700"
+      class="h-full w-full object-cover opacity-20 filter blur-lg transition-all duration-1000 scale-105"
     />
-    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#12100E] via-[#12100E]/80 to-[#12100E]"></div>
   </div>
 
-  <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-10">
-    <div id="testimonial-slides-container" class="relative min-h-[380px]">
+  <div class="relative z-10 mx-auto max-w-6xl px-4 sm:px-8">
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center space-x-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-1 mb-2">
+        <span class="text-[10px] uppercase tracking-[0.25em] text-[#DFC289] font-semibold">
+          Words of Love
+        </span>
+      </div>
+      <h2 class="font-display text-3xl sm:text-5xl font-normal text-white">
+        Couple Testimonials
+      </h2>
+    </div>
+
+    <!-- Testimonials Slider Container -->
+    <div id="testimonial-slider" class="relative min-h-[420px] sm:min-h-[380px]">
       {
         reviews.map((review, index) => (
           <div
-            class={`testimonial-slide transition-opacity duration-700 ease-in-out ${
+            class={`testimonial-slide transition-all duration-700 ease-in-out ${
               index === 0 ? "opacity-100 relative z-10" : "opacity-0 absolute inset-0 pointer-events-none z-0"
             }`}
             data-index={index}
             data-bg={review.image}
           >
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
-              <!-- Left Square Photo Frame (Matching Screenshot 5) -->
-              <div class="md:col-span-5 flex justify-center md:justify-start">
-                <div class="w-64 h-64 sm:w-80 sm:h-80 rounded overflow-hidden shadow-2xl border-4 border-white/20">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <!-- Left Square Photo Frame -->
+              <div class="md:col-span-5 flex justify-center">
+                <div class="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden shadow-2xl border border-[#C5A059]/40 group">
                   <img
                     src={review.image}
                     alt={review.couple}
-                    class="h-full w-full object-cover object-center"
+                    class="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div class="absolute bottom-3 left-4 text-xs font-mono text-[#DFC289] tracking-wider">
+                    {review.location}
+                  </div>
                 </div>
               </div>
 
-              <!-- Right Content Block (Matching Screenshot 5) -->
-              <div class="md:col-span-7 space-y-6">
-                <span class="text-xs uppercase tracking-[0.25em] text-white/80 font-sans block">
-                  Testimonials
-                </span>
+              <!-- Right Content Block -->
+              <div class="md:col-span-7 space-y-5 text-center md:text-left">
+                <!-- Stars -->
+                <div class="flex items-center justify-center md:justify-start space-x-1 text-[#C5A059]">
+                  {Array.from({ length: review.stars }).map(() => (
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
 
-                <p class="font-sans text-sm sm:text-base leading-relaxed text-white/95 font-light">
+                <p class="font-display text-base sm:text-xl lg:text-2xl leading-relaxed text-white/95 font-light italic">
                   "{review.quote}"
                 </p>
 
-                <div class="pt-2">
-                  <h4 class="font-sans text-xs uppercase tracking-[0.25em] font-semibold text-white">
+                <div class="pt-2 border-t border-white/15">
+                  <h4 class="font-sans text-sm uppercase tracking-[0.22em] font-semibold text-[#DFC289]">
                     {review.couple}
                   </h4>
-                  <span class="text-[11px] font-sans text-white/70 font-light block">
-                    {review.role}
+                  <span class="text-xs font-sans text-white/70 font-light block mt-0.5">
+                    Verified Bride & Groom &bull; {review.location}
                   </span>
                 </div>
               </div>
@@ -82,31 +106,31 @@ const reviews = [
       }
     </div>
 
-    <!-- Bottom Controls Counter `< 1 / 3 >` (Matching Screenshot 5) -->
-    <div class="flex items-center space-x-6 text-sm text-white/90 pt-8 border-t border-white/10 mt-8">
+    <!-- Bottom Controls Counter `< 1 / 3 >` -->
+    <div class="flex items-center justify-between sm:justify-center sm:space-x-8 text-sm text-white/90 pt-8 border-t border-white/15 mt-6">
       <button
         id="testimonial-prev-btn"
-        class="p-2 hover:text-[#9F9483] transition-colors focus:outline-none"
+        class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-[#C5A059] transition-all focus:outline-none active:scale-90"
         aria-label="Previous Testimonial"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
-      <span class="font-sans font-light text-xs tracking-[0.2em]">
+      <span class="font-sans font-light text-xs tracking-[0.25em] px-4 py-1.5 rounded-full bg-white/5 border border-white/10">
         <span id="testimonial-current-num">1</span>
-        <span class="opacity-50 mx-1">/</span>
+        <span class="opacity-50 mx-1.5">/</span>
         <span>{reviews.length}</span>
       </span>
 
       <button
         id="testimonial-next-btn"
-        class="p-2 hover:text-[#9F9483] transition-colors focus:outline-none"
+        class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-[#C5A059] transition-all focus:outline-none active:scale-90"
         aria-label="Next Testimonial"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
     </div>
@@ -119,6 +143,7 @@ const reviews = [
   const totalSlides = slides.length;
   const currentNumEl = document.getElementById('testimonial-current-num');
   const bgImg = document.getElementById('testimonial-bg-img') as HTMLImageElement;
+  const slider = document.getElementById('testimonial-slider');
 
   function goToSlide(index: number) {
     slides.forEach((slide, i) => {
@@ -136,13 +161,30 @@ const reviews = [
     currentIndex = index;
   }
 
-  document.getElementById('testimonial-next-btn')?.addEventListener('click', () => {
+  function nextTestimonial() {
     const next = (currentIndex + 1) % totalSlides;
     goToSlide(next);
-  });
+  }
 
-  document.getElementById('testimonial-prev-btn')?.addEventListener('click', () => {
+  function prevTestimonial() {
     const prev = (currentIndex - 1 + totalSlides) % totalSlides;
     goToSlide(prev);
-  });
+  }
+
+  document.getElementById('testimonial-next-btn')?.addEventListener('click', nextTestimonial);
+  document.getElementById('testimonial-prev-btn')?.addEventListener('click', prevTestimonial);
+
+  // Touch swipe support for mobile
+  let startX = 0;
+  let endX = 0;
+
+  slider?.addEventListener('touchstart', (e) => {
+    startX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  slider?.addEventListener('touchend', (e) => {
+    endX = e.changedTouches[0].screenX;
+    if (endX < startX - 40) nextTestimonial();
+    if (endX > startX + 40) prevTestimonial();
+  }, { passive: true });
 </script>

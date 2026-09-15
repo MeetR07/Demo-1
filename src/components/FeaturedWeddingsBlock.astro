@@ -3,49 +3,67 @@ const featuredCards = [
   {
     image: "/images/hero_2.jpg",
     couple: "HARSHITA + NICKY",
-    location: "Goa",
+    location: "Goa Beachfront",
+    tag: "3-Day Coastal Celebration",
     link: "/wedding/rhea-kabir-goa",
-    matStyle: "border-none shadow-md",
+    matStyle: "border border-[#E8E2D9] shadow-md",
   },
   {
     image: "/images/udaipur.jpg",
     couple: "RIA + KASHYAP",
-    location: "Udaipur",
+    location: "Udaipur Palace",
+    tag: "Royal Heritage Pheras",
     link: "/wedding/ananya-sidharth-udaipur",
-    matStyle: "p-6 sm:p-8 bg-[#FFFDF8] border border-[#E7E3DF] shadow-sm",
+    matStyle: "p-4 sm:p-6 bg-[#FFFDF9] border border-[#C5A059]/40 shadow-lg",
   },
   {
     image: "/images/jaipur.jpg",
     couple: "JOBIN + ANJALI",
-    location: "Mumbai",
+    location: "Mumbai Heritage",
+    tag: "Editorial Catholic & Hindu Union",
     link: "/wedding/natasha-varun-jaipur",
-    matStyle: "border-none shadow-md",
+    matStyle: "border border-[#E8E2D9] shadow-md",
   },
 ];
 ---
 
-<section class="w-full bg-[#F3F2EE] py-20 border-b border-[#E7E3DF]">
+<section id="weddings" class="w-full bg-[#FAF8F5] py-20 sm:py-24 border-b border-[#E8E2D9]">
   <div class="mx-auto max-w-[1480px] px-4 sm:px-8">
-    <!-- 3 Featured Wedding Cards Grid with Reduced Side Margins -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-14">
+    <div class="text-center mb-12 sm:mb-16">
+      <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#C5A059] font-semibold block mb-2">
+        Featured Stories
+      </span>
+      <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl font-normal text-[#574838]">
+        Love In Full Splendor
+      </h2>
+      <p class="text-xs sm:text-sm text-[#78716C] max-w-lg mx-auto font-light leading-relaxed mt-2.5">
+        From sun-drenched coastal vows in Goa to candle-lit palace courtyards in Rajasthan.
+      </p>
+    </div>
+
+    <!-- 3 Featured Wedding Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 items-center mb-14">
       {
         featuredCards.map((card) => (
           <a href={card.link} class="group flex flex-col items-center text-center">
             <!-- Photo container with matted frame effect -->
-            <div class={`w-full aspect-[3/4] overflow-hidden rounded ${card.matStyle} mb-6 transition-transform duration-500 group-hover:-translate-y-2`}>
+            <div class={`w-full aspect-[3/4] overflow-hidden rounded-2xl ${card.matStyle} mb-5 transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl`}>
               <img
                 src={card.image}
                 alt={card.couple}
-                class="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                class="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-106"
                 loading="lazy"
               />
             </div>
 
             <!-- Couple Name & Location Title -->
-            <span class="text-[11px] uppercase tracking-[0.25em] text-[#6B5D4F]/80 font-sans font-medium mb-1 group-hover:text-[#2C2C2C] transition-colors">
+            <span class="text-[10px] uppercase tracking-[0.25em] text-[#C5A059] font-sans font-semibold mb-1">
+              {card.tag}
+            </span>
+            <span class="text-xs uppercase tracking-[0.22em] text-[#78716C] font-sans font-medium mb-1 group-hover:text-[#1C1917] transition-colors">
               {card.couple}
             </span>
-            <h3 class="font-display text-3xl font-normal text-[#6B5D4F] group-hover:text-[#434343] transition-colors">
+            <h3 class="font-display text-2xl sm:text-3xl font-normal text-[#574838] group-hover:text-[#C5A059] transition-colors">
               {card.location}
             </h3>
           </a>
@@ -53,13 +71,16 @@ const featuredCards = [
       }
     </div>
 
-    <!-- Centered Taupe Pill Button: PHOTOGRAPHY BLOG -->
+    <!-- Centered Luxury Pill Button -->
     <div class="text-center">
       <a
         href="/wedding"
-        class="inline-block rounded-full bg-[#6B5D4F] px-10 py-4 text-xs font-semibold uppercase tracking-[0.25em] text-white shadow-md transition-all duration-300 hover:bg-[#434343] hover:shadow-lg transform hover:scale-105"
+        class="inline-flex items-center space-x-3 rounded-full bg-[#574838] px-10 py-4 text-xs font-semibold uppercase tracking-[0.25em] text-white shadow-lg transition-all duration-300 hover:bg-[#C5A059] hover:shadow-xl transform hover:-translate-y-0.5 active:scale-95"
       >
-        Photography Blog
+        <span>View All Wedding Stories</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
       </a>
     </div>
   </div>

@@ -2,73 +2,113 @@
 const slides = [
   {
     image: "/images/hero_1.jpg",
-    subtitle: "Wedding Ceremony",
+    subtitle: "Fine Art Royal Wedding",
     title: "INDIA",
+    location: "Rajasthan & Mumbai",
   },
   {
     image: "/images/hero_2.jpg",
-    subtitle: "Couple Session",
+    subtitle: "Destination Romance",
     title: "LONDON",
+    location: "The Ritz & Cotswolds",
   },
   {
     image: "/images/hero_3.jpg",
-    subtitle: "Destination Wedding",
+    subtitle: "Grand Royal Celebrations",
     title: "DUBAI",
+    location: "Burj Al Arab & Emirates Palace",
   },
 ];
 ---
 
-<section class="relative h-[85vh] min-h-[580px] w-full overflow-hidden bg-[#1E1C1A]">
+<section class="relative h-[86vh] min-h-[580px] sm:min-h-[640px] w-full overflow-hidden bg-[#12100E] select-none">
   <!-- Slides Container -->
   <div id="hero-slider" class="relative h-full w-full">
     {
       slides.map((slide, index) => (
         <div
           class={`hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === 0 ? "opacity-100 z-10" : "opacity-0 z-0"
+            index === 0 ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
           }`}
           data-slide-index={index}
         >
-          <!-- Background Image with Soft Tint -->
+          <!-- Background Image with Soft Tint & Vignette -->
           <div class="absolute inset-0 overflow-hidden">
             <img
               src={slide.image}
               alt={slide.title}
               class="h-full w-full object-cover object-center transform scale-105 transition-transform duration-10000 ease-out"
             />
-            <div class="absolute inset-0 bg-black/35"></div>
+            <!-- Luxury Vignette & Dark Gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/40"></div>
           </div>
 
-          <!-- Content Overlay in exact Pixieset / thephotostore.in layout -->
-          <div class="relative z-20 flex h-full flex-col justify-end items-center text-center px-6 pb-24 pt-32 max-w-5xl mx-auto text-white">
-            <span class="font-sans text-xs uppercase tracking-[0.3em] font-light text-white/90 mb-3">
-              {slide.subtitle}
-            </span>
-            <h1 class="font-display text-5xl sm:text-7xl md:text-8xl font-normal tracking-[0.1em] text-white leading-tight mb-8">
+          <!-- Content Overlay in Luxury Wedding Editorial Layout -->
+          <div class="relative z-20 flex h-full flex-col justify-end items-center text-center px-4 sm:px-6 pb-16 sm:pb-20 pt-28 max-w-5xl mx-auto text-white">
+            <!-- Badge -->
+            <div class="inline-flex items-center space-x-2 rounded-full border border-white/30 bg-black/30 backdrop-blur-md px-4 py-1.5 mb-4 shadow-sm">
+              <span class="h-1.5 w-1.5 rounded-full bg-[#C5A059] animate-pulse"></span>
+              <span class="font-sans text-[10px] sm:text-xs uppercase tracking-[0.25em] font-light text-white/95">
+                {slide.subtitle}
+              </span>
+            </div>
+
+            <!-- Main Title -->
+            <h1 class="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-[0.08em] text-white leading-tight mb-2 drop-shadow-md">
               {slide.title}
             </h1>
 
-            <!-- Slide Nav Counter -->
-            <div class="flex items-center space-x-6 text-sm tracking-widest text-white/90 pt-4">
+            <p class="font-sans text-xs sm:text-sm uppercase tracking-[0.3em] text-[#DFC289] font-light mb-8">
+              {slide.location}
+            </p>
+
+            <!-- Dual Luxury CTA Buttons (High Conversion & User-friendly) -->
+            <div class="flex flex-col sm:flex-row items-center gap-3.5 mb-8 w-full sm:w-auto px-4">
+              <a
+                href="#weddings"
+                class="w-full sm:w-auto rounded-full bg-white px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#1C1917] shadow-xl transition-all duration-300 hover:bg-[#C5A059] hover:text-white transform hover:-translate-y-0.5 active:scale-95"
+              >
+                Explore Weddings
+              </a>
+              <a
+                href="#inquire"
+                class="w-full sm:w-auto rounded-full border border-white/50 bg-black/40 backdrop-blur-md px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-white shadow-xl transition-all duration-300 hover:border-[#C5A059] hover:bg-[#C5A059]/20 transform hover:-translate-y-0.5 active:scale-95"
+              >
+                Check Date Availability
+              </a>
+            </div>
+
+            <!-- Slide Nav Counter & Arrow Controls -->
+            <div class="flex items-center space-x-6 text-sm tracking-widest text-white/90">
               <button
-                class="hero-prev-btn p-2 hover:text-[#9F9483] transition-colors focus:outline-none"
+                class="hero-prev-btn p-2.5 rounded-full hover:bg-white/15 transition-all focus:outline-none active:scale-90"
                 aria-label="Previous slide"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
-              <span class="font-sans font-light text-xs tracking-[0.2em]">
-                <span class="current-slide-num">{index + 1}</span>
-                <span class="opacity-50 mx-1">/</span>
-                <span>{slides.length}</span>
-              </span>
+
+              <div class="flex items-center space-x-2">
+                {
+                  slides.map((_, i) => (
+                    <button
+                      class={`hero-dot-btn h-1.5 rounded-full transition-all duration-300 ${
+                        i === index ? "w-8 bg-[#C5A059]" : "w-2 bg-white/40 hover:bg-white/70"
+                      }`}
+                      data-slide={i}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))
+                }
+              </div>
+
               <button
-                class="hero-next-btn p-2 hover:text-[#9F9483] transition-colors focus:outline-none"
+                class="hero-next-btn p-2.5 rounded-full hover:bg-white/15 transition-all focus:outline-none active:scale-90"
                 aria-label="Next slide"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
             </div>
@@ -82,19 +122,30 @@ const slides = [
 <script>
   let currentSlide = 0;
   const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot-btn');
   const totalSlides = slides.length;
   let slideInterval: any;
+  const slider = document.getElementById('hero-slider');
 
   function showSlide(index: number) {
     slides.forEach((slide, i) => {
       if (i === index) {
-        slide.classList.remove('opacity-0', 'z-0');
+        slide.classList.remove('opacity-0', 'z-0', 'pointer-events-none');
         slide.classList.add('opacity-100', 'z-10');
       } else {
         slide.classList.remove('opacity-100', 'z-10');
-        slide.classList.add('opacity-0', 'z-0');
+        slide.classList.add('opacity-0', 'z-0', 'pointer-events-none');
       }
     });
+
+    dots.forEach((dot, i) => {
+      if (i === index) {
+        dot.className = "hero-dot-btn h-1.5 rounded-full transition-all duration-300 w-8 bg-[#C5A059]";
+      } else {
+        dot.className = "hero-dot-btn h-1.5 rounded-full transition-all duration-300 w-2 bg-white/40 hover:bg-white/70";
+      }
+    });
+
     currentSlide = index;
   }
 
@@ -123,6 +174,38 @@ const slides = [
       resetTimer();
     });
   });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      showSlide(i);
+      resetTimer();
+    });
+  });
+
+  // Touch Swipe Support for Mobile Users
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  slider?.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  slider?.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    if (touchEndX < touchStartX - swipeThreshold) {
+      nextSlide();
+      resetTimer();
+    }
+    if (touchEndX > touchStartX + swipeThreshold) {
+      prevSlide();
+      resetTimer();
+    }
+  }
 
   function startTimer() {
     slideInterval = setInterval(nextSlide, 6000);
