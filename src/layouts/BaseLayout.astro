@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import MobileDrawer from "../components/MobileDrawer.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -36,6 +37,7 @@ const {
   </head>
   <body class="bg-paper text-ink font-sans antialiased selection:bg-gold selection:text-white overflow-x-hidden min-h-screen flex flex-col justify-between">
     <Header />
+    <MobileDrawer />
     <main class="flex-grow">
       <slot />
     </main>
